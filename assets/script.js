@@ -37,6 +37,7 @@ searchBtn.click(function () {
       console.log(data._embedded.events[0].name);
       console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
       console.log(data._embedded.events[0].dates.start.localDate);
+      for (var i = 0; i < data.length; i++) {}
     });
 });
 
