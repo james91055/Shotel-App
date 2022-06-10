@@ -3,6 +3,7 @@ var dateEndEl = $("#datepicker-end");
 var cityEl = $("#city-input");
 var searchBtn = $("#search-button");
 var eventsList = document.querySelector("ul");
+var eventButtons = 
 
 $(function () {
   $("#datepicker").datepicker();
