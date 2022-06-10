@@ -9,18 +9,11 @@ fetch('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
   });
   
   
-  fetch('https://api.yelp.com/v3/businesses/search', {
+fetch('https://api.yelp.com/v3/businesses/search?location=&term&')
     headers: {
-    Authorization: "Bearer <>"
+    Authorization: "Bearer N6Skfd21VaE0zmjYVT-rOZVHwzPzmZj4QHBmzZs27iK8Yctlg_UGniBPqkk5VBA5Tb45MsoTiTR2YxypBzuvbyQ-axQ_nU4V6Q8b07tcDK2iDaADLFpPjVejhG2iYnYx"
     }
-    })
-    .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-      });
-
+  
 
  var date = $("#datepicker").val();
   $(function () {
