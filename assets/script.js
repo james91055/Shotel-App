@@ -2,7 +2,7 @@ var dateEl = $("#datepicker");
 var dateEndEl = $("#datepicker-end");
 var cityEl = $("#city-input");
 var searchBtn = $("#search-button");
-var eventsList = document.querySelector('ul');
+var eventsList = document.querySelector("ul");
 
 $(function () {
   $("#datepicker").datepicker();
@@ -35,12 +35,13 @@ searchBtn.click(function () {
     })
     .then(function (data) {
       console.log(data);
-      console.log(data._embedded.events[0].name);
+      console.log(data._embedded.events);
       console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
+      console.log(data._embedded.events[0].dates.start.dateTime);
       console.log(data._embedded.events[0].dates.start.localDate);
-      for (var i = 0; i < data.length; i++) {
-        var listItem = document.createElement('li');
-        listItem.textContent = data[i].events;
+      for (var i = 0; i < data._embedded.events.length; i++) {
+        var listItem = document.createElement("li");
+        listItem.textContent = data._embedded.events[i].name;
         eventsList.appendChild(listItem);
       }
     });
@@ -48,7 +49,7 @@ searchBtn.click(function () {
 
 //yelp api
 fetch(
-  "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=US",
+  "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=92618&size=9",
   {
     headers: {
       Authorization:
