@@ -2,6 +2,7 @@ var dateEl = $("#datepicker");
 var dateEndEl = $("#datepicker-end");
 var cityEl = $("#city-input");
 var searchBtn = $("#search-button");
+var eventsList = document.querySelector('ul');
 
 $(function () {
   $("#datepicker").datepicker();
@@ -37,6 +38,11 @@ searchBtn.click(function () {
       console.log(data._embedded.events[0].name);
       console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
       console.log(data._embedded.events[0].dates.start.localDate);
+      for (var i = 0; i < data.length; i++) {
+        var listItem = document.createElement('li');
+        listItem.textContent = data[i].events;
+        eventsList.appendChild(listItem);
+      }
     });
 });
 
