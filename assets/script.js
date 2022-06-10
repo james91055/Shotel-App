@@ -44,6 +44,13 @@ searchBtn.click(function () {
         listItem.textContent = data._embedded.events[i].name;
         eventsList.appendChild(listItem);
       }
+      var eventButtons = eventsList.children;
+      for (var i = 0; i < eventButtons.length; i++) {
+          var btn = eventButtons[i];
+          btn.innerText = data.data._embedded.events[i].name;
+      }
+
+
     });
 });
 
