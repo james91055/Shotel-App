@@ -49,20 +49,32 @@ searchBtn.click(function () {
       console.log(eventZip);
       console.log(data._embedded.events[0].dates.start.dateTime);
       console.log(data._embedded.events[0].dates.start.localDate);
+
+      //Alan: ticket master loop to make each event display as a list item (li). 
+      // Also set attribute "eventName" to each list item in order to store it in local storage
+      // Also added on event listenrs to each list item 
+
       for (var i = 0; i < data._embedded.events.length; i++) {
         var listItem = document.createElement("li");
-        listItem.textContent = data._embedded.events[i].name;
+        var eventName = data._embedded.events[i].name;
+        listItem.textContent = eventName;
+        var eventPostalCode = data._embedded.events[i]._embedded.venues[0].postalCode;
+        listItem.setAttribute("eventName", eventName);
+        localStorage.setItem(eventName, eventPostalCode);
         eventsList.appendChild(listItem);
+        listItem.addEventListener("click", onEventClick);
       }
-      var eventButtons = eventsList.children;
-      for (var i = 0; i < eventButtons.length; i++) {
-          var btn = eventButtons[i];
-          btn.innerText = data.data._embedded.events[i].name;
-      }
-
-
     });
 });
+
+//Alan: made this function so that once the list item is clicked the event name and postal code is added to local storage
+function onEventClick(event) {
+  var listItem = event.target;
+  var eventName = listItem.getAttribute("eventName");
+  var postalCode = localStorage.getItem(eventName);
+  console.log("postal code for ", eventName, " is ", postalCode);
+}
+
 
 //yelp api
 
