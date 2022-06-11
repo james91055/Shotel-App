@@ -2,13 +2,20 @@ var dateEl = $("#datepicker");
 var dateEndEl = $("#datepicker-end");
 var cityEl = $("#city-input");
 var searchBtn = $("#search-button");
-var eventsList = document.querySelector('ul');
-// var termEl = 
+
+var eventsList = document.querySelector(".event-list");
+var eventZip;
+var li;
+var typeDropdownEl = $("#restaurant-dropdown");
+var restaurantSearchBtn = $("#restaurant-search-button");
 
 
 $(function () {
   $("#datepicker").datepicker();
   $("#datepicker-end").datepicker();
+});
+$(function () {
+  $("#restaurant-dropdown").selectmenu();
 });
 
 //Search Button listn to click event
@@ -37,34 +44,63 @@ searchBtn.click(function () {
     })
     .then(function (data) {
       console.log(data);
-      console.log(data._embedded.events[0].name);
+      //Alan: adding empty strign so that each time a new search is made the last one is cleared. 
+      eventsList.innerHTML = "";
       console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
+      eventZip = data._embedded.events[0]._embedded.venues[0].postalCode;
+      console.log(eventZip);
+      console.log(data._embedded.events[0].dates.start.dateTime);
       console.log(data._embedded.events[0].dates.start.localDate);
-      for (var i = 0; i < data.length; i++) {
-        var listItem = document.createElement('li');
-        listItem.textContent = data[i].events;
+
+      //Alan: ticket master loop to make each event display as a list item (li). 
+      // Also set attribute "eventName" to each list item in order to store it in local storage
+      // Also added on event listenrs to each list item 
+
+      for (var i = 0; i < data._embedded.events.length; i++) {
+        var listItem = document.createElement("li");
+        var eventName = data._embedded.events[i].name;
+        listItem.textContent = eventName;
+        var eventPostalCode = data._embedded.events[i]._embedded.venues[0].postalCode;
+        listItem.setAttribute("eventName", eventName);
+        localStorage.setItem(eventName, eventPostalCode);
         eventsList.appendChild(listItem);
+        listItem.addEventListener("click", onEventClick);
       }
     });
 });
 
+//Alan: made this function so that once the list item is clicked the event name and postal code is added to local storage
+function onEventClick(event) {
+  var listItem = event.target;
+  var eventName = listItem.getAttribute("eventName");
+  var postalCode = localStorage.getItem(eventName);
+  console.log("postal code for ", eventName, " is ", postalCode);
+}
+
+
 //yelp api
 var location = cityEl.val();
-// var term = 
+restaurantSearchBtn.click(function () {
+  var restaurantType = typeDropdownEl.val().toLowerCase();
 
-fetch(
-  "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + 
-  location,
-  {
-    headers: {
-      Authorization:
-        "Bearer N6Skfd21VaE0zmjYVT-rOZVHwzPzmZj4QHBmzZs27iK8Yctlg_UGniBPqkk5VBA5Tb45MsoTiTR2YxypBzuvbyQ-axQ_nU4V6Q8b07tcDK2iDaADLFpPjVejhG2iYnYx",
-    },
-  }
-)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  });
+  fetch(
+    "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" +
+      eventZip +
+      "&size=9&categories=" +
+      restaurantType,
+    {
+      headers: {
+        Authorization:
+          "Bearer N6Skfd21VaE0zmjYVT-rOZVHwzPzmZj4QHBmzZs27iK8Yctlg_UGniBPqkk5VBA5Tb45MsoTiTR2YxypBzuvbyQ-axQ_nU4V6Q8b07tcDK2iDaADLFpPjVejhG2iYnYx",
+      },
+    }
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+  console.log(restaurantType);
+});
+
