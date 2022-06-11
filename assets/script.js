@@ -3,6 +3,8 @@ var dateEndEl = $("#datepicker-end");
 var cityEl = $("#city-input");
 var searchBtn = $("#search-button");
 var eventsList = document.querySelector('ul');
+// var termEl = 
+
 
 $(function () {
   $("#datepicker").datepicker();
@@ -47,8 +49,12 @@ searchBtn.click(function () {
 });
 
 //yelp api
+var location = cityEl.val();
+// var term = 
+
 fetch(
-  "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=US",
+  "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + 
+  location,
   {
     headers: {
       Authorization:
