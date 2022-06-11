@@ -42,12 +42,23 @@
 
       <section class="events-container">
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <ul class="col-10 mb-3"></ul>
+          <ul class="col-10 mb-3 event-list"></ul>
         </div>
       </section>
 
       <section class="restaurants-container">
+        <label for="restaurant-dropdown">Select a type of restaurant</label>
+        <select name="restaurant-dropdown" id="restaurant-dropdown">
+          <option disabled selected>Please pick one</option>
+          <option>Cuban</option>
+          <option>Chinese</option>
+          <option>Japanese</option>
+          <option>Thai</option>
+          <option>Mexican</option>
+          <option>Italian</option>
+        </select>
         <div class="col-sm-12 col-md-6 col-lg-3"></div>
+        <button id="restaurant-search-button">Search</button>
       </section>
     </main>
 
@@ -55,7 +66,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-
     <script src="assets/script.js"></script>
   </body>
 </html>
