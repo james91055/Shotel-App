@@ -44,6 +44,8 @@ searchBtn.click(function () {
     })
     .then(function (data) {
       console.log(data);
+      //Alan: adding empty strign so that each time a new search is made the last one is cleared. 
+      eventsList.innerHTML = "";
       console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
       eventZip = data._embedded.events[0]._embedded.venues[0].postalCode;
       console.log(eventZip);
