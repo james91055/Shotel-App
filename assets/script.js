@@ -2,11 +2,13 @@ var dateEl = $("#datepicker");
 var dateEndEl = $("#datepicker-end");
 var cityEl = $("#city-input");
 var searchBtn = $("#search-button");
+
 var eventsList = document.querySelector(".event-list");
 var eventZip;
 var li;
 var typeDropdownEl = $("#restaurant-dropdown");
 var restaurantSearchBtn = $("#restaurant-search-button");
+
 
 $(function () {
   $("#datepicker").datepicker();
@@ -52,6 +54,13 @@ searchBtn.click(function () {
         listItem.textContent = data._embedded.events[i].name;
         eventsList.appendChild(listItem);
       }
+      var eventButtons = eventsList.children;
+      for (var i = 0; i < eventButtons.length; i++) {
+          var btn = eventButtons[i];
+          btn.innerText = data.data._embedded.events[i].name;
+      }
+
+
     });
 });
 
@@ -80,3 +89,4 @@ restaurantSearchBtn.click(function () {
     });
   console.log(restaurantType);
 });
+
