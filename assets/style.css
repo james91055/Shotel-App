@@ -4,10 +4,10 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 
-.banner {
-    height: 50%x;
-    width: 50%;
-}
+.jumbotron {
+    height: 100%;
+    background-size: cover;
+  }
 
 
 .app-header {
