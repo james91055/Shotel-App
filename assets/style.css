@@ -1,15 +1,23 @@
 body {
-  background-color: #def0f2;
-
-  font-family: "Audiowide", cursive;
-  font-family: "Oswald", sans-serif;
+    background-color: #def2e8;
+    font-family: 'Audiowide', cursive;
+    font-family: 'Oswald', sans-serif;
 }
+
+.jumbotron {
+    /* height: 50%; */
+    height: 200px;
+    background-image: url(https://user-images.githubusercontent.com/105233531/173449202-f060133e-db1d-4331-81fc-983e530c6a22.png);
+    background-size: auto;
+    background-position: center;
+  }
+
 
 .app-header {
   text-align: center;
-  color: black;
+  color: rgb(0, 0, 0);
   border-radius: 0;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid rgb(48, 110, 85);
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -18,7 +26,7 @@ body {
   text-align: center;
   color: black;
   border-radius: 0;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid rgb(48, 110, 85);
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -27,13 +35,13 @@ body {
   text-align: center;
   color: black;
   border-radius: 0;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid rgb(48, 110, 85)k;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .active-event {
-  color: blue;
+  color: rgb(0, 255, 132);
 }
 
 .restaurants-container,
@@ -41,7 +49,7 @@ body {
   text-align: center;
   color: black;
   border-radius: 0;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid rgb(48, 110, 85);
   padding-top: 20px;
   padding-bottom: 20px;
 }
