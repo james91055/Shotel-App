@@ -45,14 +45,10 @@ searchBtn.click(function () {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      eventsList.innerHTML = "";
       //Alan: adding empty strign so that each time a new search is made the last one is cleared.
       // eventsList.innerHTML = "";
-      console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
       eventZip = data._embedded.events[0]._embedded.venues[0].postalCode;
-      console.log(eventZip);
-      console.log(data._embedded.events[0].dates.start.dateTime);
-      console.log(data._embedded.events[0].dates.start.localDate);
 
       //Alan: ticket master loop to make each event display as a list item (li).
       // Also set attribute "eventName" to each list item in order to store it in local storage
@@ -109,13 +105,14 @@ restaurantSearchBtn.click(function () {
     .then(function (data) {
       console.log(data);
 
+      yelpList.innerHTML = "";
       for (var i = 0; i < 9; i++) {
         var yelpListItem = document.createElement("li");
         var restaurantName = data.businesses[i].alias;
         yelpListItem.textContent = restaurantName;
         yelpList.appendChild(yelpListItem);
+        console.log("yelp");
       }
-
     });
   console.log(restaurantType);
 });
