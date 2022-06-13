@@ -1,8 +1,14 @@
 body {
-    background-color: #def0f2;
+    background-color: #def2e8;
     font-family: 'Audiowide', cursive;
     font-family: 'Oswald', sans-serif;
 }
+
+.banner {
+    height: 50%x;
+    width: 50%;
+}
+
 
 .app-header {
     text-align: center;
