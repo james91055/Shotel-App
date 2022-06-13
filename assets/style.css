@@ -5,8 +5,11 @@ body {
 }
 
 .jumbotron {
-    height: 100%;
-    background-size: cover;
+    /* height: 50%; */
+    height: 200px;
+    background-image: url(https://user-images.githubusercontent.com/105233531/173449202-f060133e-db1d-4331-81fc-983e530c6a22.png);
+    background-size: auto;
+    background-position: center;
   }
 
 
