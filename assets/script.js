@@ -11,6 +11,7 @@ var typeDropdownEl = $("#restaurant-dropdown");
 var restaurantSearchBtn = $("#restaurant-search-button");
 var eventPostalCode;
 var eventName;
+var listItem;
 
 $(function () {
   $("#datepicker").datepicker();
@@ -55,7 +56,7 @@ searchBtn.click(function () {
       // Also added on event listenrs to each list item
 
       for (var i = 0; i < data._embedded.events.length; i++) {
-        var listItem = document.createElement("li");
+        listItem = document.createElement("li");
         eventName = data._embedded.events[i].name;
         listItem.textContent = eventName;
         var eventPostalCode =
@@ -116,3 +117,14 @@ restaurantSearchBtn.click(function () {
     });
   console.log(restaurantType);
 });
+
+function showLocalStorage() {
+  if ("event" != null) {
+    listItem = document.createElement("li");
+    var preview = localStorage.getItem("event");
+    eventsList.appendChild(listItem);
+    listItem.textContent = preview;
+    console.log(preview);
+  }
+}
+showLocalStorage();
