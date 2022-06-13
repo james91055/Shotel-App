@@ -8,7 +8,8 @@ var eventZip;
 var li;
 var typeDropdownEl = $("#restaurant-dropdown");
 var restaurantSearchBtn = $("#restaurant-search-button");
-
+var eventPostalCode;
+var eventName;
 
 $(function () {
   $("#datepicker").datepicker();
@@ -44,26 +45,26 @@ searchBtn.click(function () {
     })
     .then(function (data) {
       console.log(data);
-      //Alan: adding empty strign so that each time a new search is made the last one is cleared. 
-      eventsList.innerHTML = "";
+      //Alan: adding empty strign so that each time a new search is made the last one is cleared.
+      // eventsList.innerHTML = "";
       console.log(data._embedded.events[0]._embedded.venues[0].postalCode);
       eventZip = data._embedded.events[0]._embedded.venues[0].postalCode;
       console.log(eventZip);
       console.log(data._embedded.events[0].dates.start.dateTime);
       console.log(data._embedded.events[0].dates.start.localDate);
 
-      //Alan: ticket master loop to make each event display as a list item (li). 
+      //Alan: ticket master loop to make each event display as a list item (li).
       // Also set attribute "eventName" to each list item in order to store it in local storage
-      // Also added on event listenrs to each list item 
+      // Also added on event listenrs to each list item
 
       for (var i = 0; i < data._embedded.events.length; i++) {
         var listItem = document.createElement("li");
-        var eventName = data._embedded.events[i].name;
+        eventName = data._embedded.events[i].name;
         listItem.textContent = eventName;
-        var eventPostalCode = data._embedded.events[i]._embedded.venues[0].postalCode;
-        listItem.setAttribute("eventName", eventName);
-        localStorage.setItem(eventName, eventPostalCode);
+        var eventPostalCode =
+          data._embedded.events[i]._embedded.venues[0].postalCode;
         eventsList.appendChild(listItem);
+        console.log("postal code for ", eventName, " is ", eventPostalCode);
         listItem.addEventListener("click", onEventClick);
       }
     });
@@ -72,11 +73,18 @@ searchBtn.click(function () {
 //Alan: made this function so that once the list item is clicked the event name and postal code is added to local storage
 function onEventClick(event) {
   var listItem = event.target;
-  var eventName = listItem.getAttribute("eventName");
-  var postalCode = localStorage.getItem(eventName);
-  console.log("postal code for ", eventName, " is ", postalCode);
+  var listItems = document.querySelectorAll("li");
+  listItems.forEach(function (li) {
+    if (li.classList.contains("active-event")) {
+      li.classList.remove("active-event");
+    }
+  });
+  listItem.classList.add("active-event");
+  console.log(listItem.textContent);
+  var eventName = listItem.textContent;
+  // var postalCode = localStorage.getItem(eventName);
+  localStorage.setItem("event", eventName);
 }
-
 
 //yelp api
 restaurantSearchBtn.click(function () {
@@ -102,4 +110,3 @@ restaurantSearchBtn.click(function () {
     });
   console.log(restaurantType);
 });
-
