@@ -12,9 +12,12 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Oswald&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Sho-tel App</title>
@@ -44,24 +47,29 @@
 
       <section class="events-container d-flex justify-content-center">
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <ul class="col-12 mb-3 event-list">
-          </ul>
+          <ul class="col-12 mb-3 event-list"></ul>
         </div>
       </section>
 
       <section class="restaurants-container d-flex justify-content-center">
-        <label for="restaurant-dropdown">Select a type of restaurant</label>
-        <select name="restaurant-dropdown" id="restaurant-dropdown">
-          <option disabled selected>Please pick one</option>
-          <option>Cuban</option>
-          <option>Chinese</option>
-          <option>Japanese</option>
-          <option>Thai</option>
-          <option>Mexican</option>
-          <option>Italian</option>
-        </select>
-       
-        <button id="restaurant-search-button">Search</button> 
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <label for="restaurant-dropdown">Select a type of restaurant</label>
+          <select name="restaurant-dropdown" id="restaurant-dropdown">
+            <option disabled selected>Please pick one</option>
+            <option>Cuban</option>
+            <option>Chinese</option>
+            <option>Japanese</option>
+            <option>Thai</option>
+            <option>Mexican</option>
+            <option>Italian</option>
+          </select>
+          <br />
+          <br />
+
+          <button id="restaurant-search-button">Search</button>
+        </div>
+      </section>
+      <section class="d-flex justify-content-center restaurant-info">
         <div class="col-sm-12 col-md-6 col-lg-3">
           <ul class="col-12 mb-3 yelp-list"></ul>
         </div>

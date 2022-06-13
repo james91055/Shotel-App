@@ -1,9 +1,8 @@
 body {
+  background-color: #def0f2;
 
-    background-color: #def0f2;
-
-    font-family: 'Audiowide', cursive;
-    font-family: 'Oswald', sans-serif;
+  font-family: "Audiowide", cursive;
+  font-family: "Oswald", sans-serif;
 }
 
 .app-header {
@@ -35,4 +34,14 @@ body {
 
 .active-event {
   color: blue;
+}
+
+.restaurants-container,
+.restaurant-info {
+  text-align: center;
+  color: black;
+  border-radius: 0;
+  border-bottom: 5px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
