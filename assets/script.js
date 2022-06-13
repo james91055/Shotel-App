@@ -79,7 +79,6 @@ function onEventClick(event) {
 
 
 //yelp api
-
 restaurantSearchBtn.click(function () {
   var restaurantType = typeDropdownEl.val().toLowerCase();
 
