@@ -110,13 +110,17 @@ restaurantSearchBtn.click(function () {
       for (var i = 0; i < 9; i++) {
         var yelpListItem = document.createElement("li");
         var restaurantName = data.businesses[i].alias;
-        yelpListItem.textContent = restaurantName;
+        var yelpLink = document.createElement("a");
+        yelpLink.textContent = restaurantName;
+        yelpLink.setAttribute("href", data.businesses[i].url);
+        yelpListItem.appendChild(yelpLink);
         yelpList.appendChild(yelpListItem);
-        console.log("yelp");
+        yelpListItem.addEventListener("click", onEventClick);
       }
     });
   console.log(restaurantType);
 });
+
 
 function showLocalStorage() {
   if ("event" != null) {
