@@ -4,6 +4,7 @@ var cityEl = $("#city-input");
 var searchBtn = $("#search-button");
 
 var eventsList = document.querySelector(".event-list");
+var yelpList = document.querySelector(".yelp-list");
 var eventZip;
 var li;
 var typeDropdownEl = $("#restaurant-dropdown");
@@ -100,6 +101,14 @@ restaurantSearchBtn.click(function () {
     })
     .then(function (data) {
       console.log(data);
+
+      for (var i = 0; i < 9; i++) {
+        var yelpListItem = document.createElement("li");
+        var restaurantName = data.businesses[i].alias;
+        yelpListItem.textContent = restaurantName;
+        yelpList.appendChild(yelpListItem);
+      }
+
     });
   console.log(restaurantType);
 });
