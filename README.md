@@ -1,4 +1,4 @@
-# Shotel-App
+# Tickets-To-Table App
 
 ## Description
 
@@ -6,7 +6,7 @@
 
 ```
 AS AN user travels a lot to different states
-I WANT to check what event is happening in local and what can I get for food nearby
+I WANT to check the events by date in each city and the restaurants in the area of the event
 SO THAT user can enjoy the sudden trip with nearby events and some good foods
 ```
 
@@ -24,7 +24,6 @@ SO THAT user can enjoy the sudden trip with nearby events and some good foods
   - Set up JQuery
   - Modify classes with JQuery
   - Implented 2 APIs
-  -
   - Get and Set data from local storage
 - GitHub
   - Creating repository and branches
@@ -48,6 +47,10 @@ THEN the saved event persist
 ```
 
 ## Screenshots
+
+![Alt text](/assets/screenshot/1.png)
+![Alt text](/assets/screenshot/2.png)
+![Alt text](/assets/screenshot/3.png)
 
 ## Links and Credits
 

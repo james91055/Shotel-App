@@ -121,7 +121,6 @@ restaurantSearchBtn.click(function () {
   console.log(restaurantType);
 });
 
-
 function showLocalStorage() {
   if ("event" != null) {
     listItem = document.createElement("li");
